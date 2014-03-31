@@ -15,7 +15,6 @@ import (
 )
 
 func operationAppend(pkg *build.Package) {
-  var output string
   var zipA *exec.Cmd
 	if runtime.GOOS == "windows" {
 		fmt.Println("#### WARNING ! ####")
