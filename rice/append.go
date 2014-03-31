@@ -49,9 +49,6 @@ func operationAppend(pkg *build.Package) {
 		os.Exit(1)
 	}
 
-  if (flags.Append.Output) {
-    output = flags.Append.Output
-  }
 	// find abs path for binary file
 	binfileName, err := filepath.Abs(flags.Append.Executable)
 	if err != nil {
@@ -148,8 +145,8 @@ func operationAppend(pkg *build.Package) {
 		os.Exit(1)
 	}
 
-  if output {
-    zipA := exec.Command("zip", "-A", binfileName, "-O", output)
+  if flags.Append.Output != "" {
+    zipA := exec.Command("zip", "-A", binfileName, "-O", flags.Append.Output)
   } else {
 	  zipA := exec.Command("zip", "-A", binfileName)
   }
