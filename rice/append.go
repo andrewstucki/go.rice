@@ -15,6 +15,7 @@ import (
 )
 
 func operationAppend(pkg *build.Package) {
+  var output string
 	if runtime.GOOS == "windows" {
 		fmt.Println("#### WARNING ! ####")
 		fmt.Println("`rice append` is known not to work under windows because the `zip` command is not available. Please let me know if you got this to work (and how).")
@@ -48,6 +49,9 @@ func operationAppend(pkg *build.Package) {
 		os.Exit(1)
 	}
 
+  if (flags.Append.Output) {
+    output = flags.Append.Output
+  }
 	// find abs path for binary file
 	binfileName, err := filepath.Abs(flags.Append.Executable)
 	if err != nil {
@@ -144,7 +148,11 @@ func operationAppend(pkg *build.Package) {
 		os.Exit(1)
 	}
 
-	zipA := exec.Command("zip", "-A", binfileName)
+  if output {
+    zipA := exec.Command("zip", "-A", binfileName, "-O", output)
+  } else {
+	  zipA := exec.Command("zip", "-A", binfileName)
+  }
 	err = zipA.Run()
 	if err != nil {
 		fmt.Printf("Error setting zip offset: %s\n", err)

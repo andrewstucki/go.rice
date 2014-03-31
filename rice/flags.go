@@ -14,6 +14,7 @@ var flags struct {
 
 	Append struct {
 		Executable string `long:"exec" description:"Executable to append" required:"true"`
+		Output     string `long:"output" description:"Output location for executable"`
 	} `command:"append"`
 
 	Embed struct{} `command:"embed"`
