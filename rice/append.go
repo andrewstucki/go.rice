@@ -16,7 +16,7 @@ import (
 
 func operationAppend(pkg *build.Package) {
   var output string
-  var zipA exec.Cmd
+  var zipA *exec.Cmd
 	if runtime.GOOS == "windows" {
 		fmt.Println("#### WARNING ! ####")
 		fmt.Println("`rice append` is known not to work under windows because the `zip` command is not available. Please let me know if you got this to work (and how).")
