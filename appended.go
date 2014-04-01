@@ -3,7 +3,6 @@ package rice
 import (
 	"archive/zip"
 	"bitbucket.org/kardianos/osext"
-	"fmt"
 	"github.com/daaku/go.zipexe"
 	"os"
 	"path/filepath"
@@ -39,8 +38,8 @@ func init() {
 	}
 
 	for _, f := range rd.File {
-		fmt.Printf("%v", f)
 		// get box and file name from f.Name
+		f.Name = strings.Replace(f.Name, "\\", "/", -1)
 		fileParts := strings.SplitN(strings.TrimLeft(f.Name, "/"), "/", 2)
 		boxName := fileParts[0]
 		var fileName string
