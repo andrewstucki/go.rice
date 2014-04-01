@@ -3,7 +3,7 @@ package rice
 import (
 	"errors"
 	"fmt"
-	"github.com/GeertJohan/go.rice/embedded"
+	"github.com/andrewstucki/go.rice/embedded"
 	"io/ioutil"
 	"os"
 	"path/filepath"

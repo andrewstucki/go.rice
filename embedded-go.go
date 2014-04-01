@@ -1,7 +1,7 @@
 package rice
 
 import (
-	"github.com/GeertJohan/go.rice/embedded"
+	"github.com/andrewstucki/go.rice/embedded"
 	"os"
 	"time"
 )
